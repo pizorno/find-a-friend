@@ -1,0 +1,10 @@
+site_name: 🔍 Find a Friend
+repo_url: https://github.com/pizorno/find-a-friend
+repo_name: pizorno/find-a-friend
+edit_uri: tree/main/docs
+
+theme:
+  name: material
+  language: pt-BR
+  # logo: assets/logo.png
+  # favicon: assets/logo.png
