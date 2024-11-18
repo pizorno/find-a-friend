@@ -175,6 +175,8 @@ pyrightconfig.json
 
 # Other files
 db.sqlite
+**/__pycache__
+.pytest_cache
 
 # End of https://www.toptal.com/developers/gitignore/api/python
 
