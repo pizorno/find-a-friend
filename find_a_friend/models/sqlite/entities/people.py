@@ -5,6 +5,7 @@ from find_a_friend.models.sqlite.settings.base import Base
 
 class PeopleTable(Base):
     __tablename__ = 'people'
+    __table_args__ = {'extend_existing': True}
     id = Column(INTEGER, primary_key=True)
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=False)
