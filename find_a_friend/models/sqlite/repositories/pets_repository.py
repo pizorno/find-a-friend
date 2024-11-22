@@ -1,9 +1,12 @@
 from sqlalchemy.orm.exc import NoResultFound
 
 from find_a_friend.models.sqlite.entities.pets import PetsTable
+from find_a_friend.models.sqlite.interfaces.pets_repository import (
+    PetsRepositoryInterface,
+)
 
 
-class PetsRepository:
+class PetsRepository(PetsRepositoryInterface):
     def __init__(self, db_connection) -> None:
         self.__db_connection = db_connection
 

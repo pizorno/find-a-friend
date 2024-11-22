@@ -2,9 +2,12 @@ from sqlalchemy.orm.exc import NoResultFound
 
 from find_a_friend.models.sqlite.entities.people import PeopleTable
 from find_a_friend.models.sqlite.entities.pets import PetsTable
+from find_a_friend.models.sqlite.interfaces.people_repository import (
+    PeopleRepositoryInterface,
+)
 
 
-class PeopleRepository:
+class PeopleRepository(PeopleRepositoryInterface):
     def __init__(self, db_connection) -> None:
         self.__db_connection = db_connection
 
@@ -30,7 +33,7 @@ class PeopleRepository:
             try:
                 person = (
                     database.session.query(PeopleTable)
-                    .outerjoin(PetsTable, PetsTable.id == PeopleTable.pet_id)
+                    .join(PetsTable, PetsTable.id == PeopleTable.pet_id)
                     .filter(PeopleTable.id == person_id)
                     .with_entities(
                         PeopleTable.first_name,
