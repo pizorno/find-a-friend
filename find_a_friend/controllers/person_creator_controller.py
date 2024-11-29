@@ -21,17 +21,19 @@ class PersonCreatorController:
 
     def __validate_names(self, first_name: str, last_name: str) -> None:
         non_valid_caracteres = re.compile(r'[^a-zA-Z]')
-        if non_valid_caracteres.search(first_name) or non_valid_caracteres.search(last_name):
+        if non_valid_caracteres.search(
+            first_name
+        ) or non_valid_caracteres.search(last_name):
             raise Exception('Nome da pessoa inválido')
 
-    def __insert_person(self, first_name: str, last_name: str, age: int, pet_id: int) -> None:
-        self.__people_repository.insert_person(first_name, last_name, age, pet_id)
+    def __insert_person(
+        self, first_name: str, last_name: str, age: int, pet_id: int
+    ) -> None:
+        self.__people_repository.insert_person(
+            first_name, last_name, age, pet_id
+        )
 
     def __format_response(self, person_info: dict) -> dict:
         return {
-            'data': {
-                'type': 'Person',
-                'count': 1,
-                'attributes': person_info
-            }
+            'data': {'type': 'Person', 'count': 1, 'attributes': person_info}
         }

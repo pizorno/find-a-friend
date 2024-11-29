@@ -1,7 +1,7 @@
+from find_a_friend.models.sqlite.entities.people import PeopleTable
 from find_a_friend.models.sqlite.interfaces.people_repository import (
     PeopleRepositoryInterface,
 )
-from find_a_friend.models.sqlite.entities.people import PeopleTable
 
 
 class PersonFinderController:
@@ -9,14 +9,14 @@ class PersonFinderController:
         self.__people_repository = people_repository
 
     def find(self, person_id: int) -> dict:
-        person =self.__find_person(person_id)
+        person = self.__find_person(person_id)
         response = self.__format_response(person)
         return response
 
     def __find_person(self, person_id: int) -> PeopleTable:
         person = self.__people_repository.get_person(person_id)
         if not person:
-            raise Exception("Pessoa não encontrada")
+            raise Exception('Pessoa não encontrada')
         return person
 
     def __format_response(self, person: PeopleTable) -> dict:
@@ -28,7 +28,7 @@ class PersonFinderController:
                     'first_name': person.first_name,
                     'last_name': person.last_name,
                     'pet_name': person.pet_name,
-                    'pet_type': person.pet_type
-                }
+                    'pet_type': person.pet_type,
+                },
             }
         }
