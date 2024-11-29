@@ -1,10 +1,13 @@
+from find_a_friend.controllers.interfaces.pet_lister_controller import (
+    PetListerControllerInterface,
+)
 from find_a_friend.models.sqlite.entities.pets import PetsTable
 from find_a_friend.models.sqlite.interfaces.pets_repository import (
     PetsRepositoryInterface,
 )
 
 
-class PetListerController:
+class PetListerController(PetListerControllerInterface):
     def __init__(self, pet_repository: PetsRepositoryInterface) -> None:
         self.__pet_repository = pet_repository
 
